@@ -11,8 +11,8 @@ class Solution {
                 count[c.charCodeAt(0) - 'a'.charCodeAt(0)] +=1;
             }
             const key = count.join(',');
-            (!res[key]){
-                res[key] = []
+            if (!res[key]){
+                res[key] = [];
             }
             res[key].push(s);
         }
