@@ -5,22 +5,29 @@ class Solution {
      * @return {boolean}
      */
     isAnagram(s, t) {
-    if(s.length !== t.length){
-        return false;
-     }
-     const frequency1 = {}
-     const frequency2 = {}
-     for(let count of s){
-        frequency1[count] = (frequency1[count] || 0) + 1
-     }
-     for (let count of t){
-        frequency2[count] = (frequency2[count] || 0) + 1;
-     }
-     for (let i in frequency1){
-       if(frequency1[i] !== frequency2[i]){
-        return false;
-       }
-     }
-     return true;
-    }
+      if (s.length !== t.length){
+         return false;
+      }
+      const jackie = {}
+      const youssef = {}
+
+      for (let i of s){
+         jackie[i] = (jackie[i] || 0) + 1;
+      }
+      for (let o of t ){
+         youssef[o] = (youssef[o]|| 0) +1;     
+      }
+
+      for (let p in youssef){
+         if (jackie[p] !== youssef[p]){
+            return false
+         } 
+      }
+      return true
+   } 
 }
+
+// !== === '0' != 0
+// != or == '0' = 0
+
+
