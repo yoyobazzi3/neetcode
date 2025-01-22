@@ -1,4 +1,4 @@
-class Codec {
+class Solution {
     /**
      * Encodes a list of strings to a single string.
      * @param {string[]} strs
@@ -6,8 +6,8 @@ class Codec {
      */
     encode(strs) {
         let encoded = "";
-        for (let str of strs) {
-            encoded += `${str.length}#${str}`;
+        for (let s of strs) {
+            encoded += `${s.length}:${s}`;
         }
         return encoded;
     }
@@ -18,34 +18,19 @@ class Codec {
      * @return {string[]}
      */
     decode(s) {
-        const decoded = [];
+        let decoded = [];
         let i = 0;
-
-        while (i < s.length) {
-            // Find the position of the next '#'
-            const delimiterIndex = s.indexOf("#", i);
-
-            // Get the length of the next string
-            const length = parseInt(s.slice(i, delimiterIndex));
-
-            // Extract the string of that length
-            const str = s.slice(delimiterIndex + 1, delimiterIndex + 1 + length);
-
-            // Add it to the result
-            decoded.push(str);
-
-            // Move the pointer past this segment
-            i = delimiterIndex + 1 + length;
+        while(i< s.length){
+            let j = i;
+            if(s[j] !== ":"){
+                j++;
+            }
+            const length = parseInt(s.substring(i,j),10);
+            const str = s.substring(j + 1, j + length + 1);
+            decoded.push(str)
+            i = j+1+length;
         }
-
         return decoded;
     }
 }
 
-const codec = new Codec();
-const strs = ["hello", "world", "foo", "bar"];
-const e = codec.encode(strs)
-const d = codec.decode(e)
-
-console.log(e)
-console.log(d)
