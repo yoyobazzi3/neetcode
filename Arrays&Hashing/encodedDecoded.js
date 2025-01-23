@@ -5,11 +5,12 @@ class Solution {
      * @return {string}
      */
     encode(strs) {
-        let encoded = "";
-        for (let s of strs) {
-            encoded += `${s.length}:${s}`;
-        }
-        return encoded;
+       let str = "";
+
+       for(let s of strs){
+           str += `${s.length}#${s}`
+       }
+       return str;
     }
 
     /**
@@ -18,19 +19,24 @@ class Solution {
      * @return {string[]}
      */
     decode(s) {
-        let decoded = [];
+        const arr = [];
         let i = 0;
-        while(i< s.length){
+        while(i < s.length){
             let j = i;
-            if(s[j] !== ":"){
+            while(s[j] !== "#"){
                 j++;
             }
-            const length = parseInt(s.substring(i,j),10);
-            const str = s.substring(j + 1, j + length + 1);
-            decoded.push(str)
-            i = j+1+length;
+            const length = parseInt(s.substring(i,j), 10);
+            const word = s.substring(j+1, j+1 + length);
+            arr.push(word);
+            i = j + 1 + length;
         }
-        return decoded;
+        return arr
     }
 }
 
+const solution = new Solution();
+const arr = ["Yo","youssef", "Hey"];
+const a = solution.encode(arr);
+console.log(a);
+console.log(solution.decode(a));
