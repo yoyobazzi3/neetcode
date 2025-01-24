@@ -5,22 +5,21 @@ class Solution {
      * @return {number[]}
      */
     twoSum(numbers, target) {
-        let left = 0;
-        let right = numbers.length-1;
-
-        while(left< right){
-            const num = numbers[left] + numbers[right];
-            if(num > target ){
-                right --;
-            }else if(num < target){
-                left ++;
-            }else{
-                return [left +1, right +1];
-            }
+       let l = 0;
+       let r = numbers.length-1;
+       while(l<r){
+        const num = numbers[l] + numbers[r];
+        if(num > target){
+            r--;
+        }else if(num<target){
+            l++
+        }else{
+            return [l+1, r+1]
         }
-        return [];
+       }
+       return [];
     }
 }
 const solution = new Solution();
 const arr = [1,2,3,4]
-console.log(solution.twoSum(arr,3));
+console.log(solution.twoSum(arr,4));

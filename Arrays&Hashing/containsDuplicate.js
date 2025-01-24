@@ -1,13 +1,17 @@
 class Solution{
 
     hasDuplicate(nums){
-       const set= new Set();
-       for(let num of nums){
-        if(set.has(num)){
-            return true
-       }
-       set.add(num)
-       
+       const set = new Set();
+      for(let i of nums){
+          if(set.has(i)){
+              return true;
+          }
+          set.add(i);
+      }
+      return false;
     }
-    return false;
-}}
+}
+
+const solution = new Solution();
+const arr = [1,2,3]
+console.log(solution.hasDuplicate(arr))
